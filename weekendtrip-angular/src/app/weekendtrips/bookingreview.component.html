@@ -1,0 +1,56 @@
+
+
+<div class="mt-10 mainbackground" id="bck">
+  
+  <div class=" container content" style="border: 3px solid rgb(18, 16, 16);" >
+    <div class="details">
+      <h1 class="card-title">Hi {{curentUser.firstname}} {{curentUser.lastname}}</h1>
+
+      <h2 style="background: linear-gradient(to bottom,rgba(0, 0, 255, 0.44),rgba(255, 255, 255, 0.319));"> Your Booking Details</h2>
+          <ul class="list-unstyled">
+            <li>Email : <span class="travellerDetails" style="font-weight: 500;">{{curentUser.email}}</span></li>  <br>
+            <li>First Name: <span class="travellerDetails" style="font-weight: 500;">{{curentUser.firstname}}</span></li>  <br>
+            <li>Last Name: <span class="travellerDetails" style="font-weight: 500;">{{curentUser.lastname}}</span></li>  <br>
+            <li>Gender : <span class="travellerDetails" style="font-weight: 500;">{{curentUser.gender}}</span></li>  <br>
+            <li>Moblie Number : <span class="travellerDetails" style="font-weight: 500;">{{curentUser.mobileNumber}}</span></li>  <br>
+
+          </ul>
+          <hr>
+
+    </div>
+    <div>
+      <h2 style="background: linear-gradient(to bottom,rgba(0, 0, 255, 0.44),rgba(255, 255, 255, 0.319));"> Your Group Details</h2>
+      <table class="table table-hover" border="2px">
+        <thead>
+          <tr>
+            <th scope="col">SN No</th>
+            <th scope="col">Name</th>
+            <th scope="col">Age</th>
+            <th scope="col">Gender</th>
+            <th scope="col">Aadhar</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let person of currentTraveller.passenger,index as i" >
+            <th scope="row">{{i+1}}</th>
+            <td>{{person.passengerName}}</td>
+            <td>{{person.passengerAge}}</td>
+            <td>{{person.passengerGender}}</td>
+            <td>{{person.passengerAadhar}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h2 style="background: linear-gradient(to bottom,rgba(0, 0, 255, 0.44),rgba(255, 255, 255, 0.319));">Trip Details</h2>
+    <h4 >Trip Strating Date : <span class="travellerDetails" style="font-weight: 500;">{{currentTraveller.journeyStartingDate |date}}</span> </h4>
+    <h4 >Trip Ending Date : <span class="travellerDetails" style="font-weight: 500;">{{currentTraveller.journeyEndingDate   | date}}</span></h4>
+    <h4 >Trip Name : <span class="travellerDetails" style="font-weight: 500;">{{currentTraveller.packageName}}</span></h4>
+    <h4 >Trip Price : <span class="travellerDetails" style="font-weight: 500;">{{currentTraveller.packagePrice}}</span></h4>
+    <h4 >Trip totlal price : <span class="travellerDetails" style="font-weight: 500;">{{total_price}}</span></h4>
+    <hr>
+  </div>
+  <br><br>
+  <button class="btn btn-success" routerLink="/payment" style="margin-left:700px">Proceed to payment</button>
+</div> 
+

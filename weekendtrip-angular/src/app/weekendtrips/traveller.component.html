@@ -1,0 +1,166 @@
+<div class="traveller-page">
+  <br><br><br><br><br><br> 
+  <h1 style="text-align: center; " class="mb-3">Traveller details</h1>
+<div class="d-flex justify-content-center">
+
+
+<form  #form3="ngForm" style="width:600px" (ngSubmit)="saveTraveller(form3)">
+
+  <div class="form-group row">
+    <label for="inputPassword3" class="col-sm-3 col-form-label" >Package Name</label>
+    <div class="col-sm-7">
+      <input type="text" class="form-control" name="packageName" [(ngModel)]="traveller.packageName"  disabled>
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <label for="inputPassword3" class="col-sm-3 col-form-label" >Package Price (Rupees)</label>
+    <div class="col-sm-7">
+      <input type="text" class="form-control" name="packagePrice
+      " [(ngModel)]="packagee.packagePrice" disabled >
+    </div>
+  </div>
+
+  <div class="form-group row" >
+    <label for="inputPassword3" class="col-sm-3 col-form-label"  >Email</label>
+     <div class="col-sm-7">
+      <input type="text" class="form-control" name="travellerEmail" [(ngModel)]="traveller.travellerEmail" disabled="true" >
+    </div>
+  </div>
+
+  <div class="form-group row" >
+    <label for="inputPassword3" class="col-sm-3 col-form-label" >StartDate</label>
+    <div class="col-sm-7">
+      <mat-form-field >
+        <input matInput [matDatepicker]="picker" [min]="minDate"  name="journeyStartingDate" [(ngModel)]="traveller.journeyStartingDate" placeholder="Choose Starting date" style="z-index: 8;">
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker ></mat-datepicker>
+      </mat-form-field>
+      </div>
+  </div>
+
+
+  <!-- <div class="form-group row" >
+    <label for="inputPassword3" class="col-sm-2
+     col-form-label" >EndingDate</label>
+    <div class="col-sm-7">
+      <input type="date" name="journeyStartingDate" id="inputPassword3" [(ngModel)]="traveller.journeyEndingDate">
+    </div>
+  </div>  -->
+
+
+
+  <div  class="d-flex justify-content-md-center">
+    <!-- <button class="btn btn-primary" (click)="showModal()">AddPassenger</button> -->
+    <input type="button" value="Add Passenger"  (click)="showModal()" class="btn btn-primary">
+  </div>
+
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">Name</th>
+          <th scope="col">Age</th>
+          <th scope="col">Gender</th>
+          <th scope="col">Aadhar</th>
+          <th scope="col">Action</th>
+        </tr>
+      </thead>
+
+      <!-- <div > -->
+      <tbody>
+        <tr *ngFor="let value of passengerDetailsArry;index as i">
+          <td>{{value.passengerName}}</td>
+          <td>{{value.passengerAge}}</td>
+          <td>{{value.passengerGender}}</td>
+          <td>{{value.passengerAadhar}}</td>
+          <td><button class="btn btn-danger" (click)="deletePassenger(i)"><i class="fas fa-trash-arrow-up"></i></button>
+        </tr>
+      </tbody>
+      <!-- </div> -->
+    </table>
+  <button type="submit" class="btn btn-primary">Next</button>
+  </form>
+  </div>
+
+
+
+
+  <!--modal -->
+  <div class="modal custompass " tabindex="-1" style="display:block" *ngIf='this.showmodal'>
+    <div class="modal-dialog ">
+      <div class="modal-content ">
+        <div class="modal-header">
+          <h5 class="modal-title">Passenger Details</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="hideModal()">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form  #form3="ngForm"  (ngSubmit)="savePassenger(form3)" novalidate>
+          <div class="form-group row" >
+
+            <label for="inputPassword3" class="col-sm-2 col-form-label" >Name</label>
+             <div class="col-sm-7">
+              <input type="text" class="form-control"  name="passengerName" [(ngModel)]="passenger.passengerName" #name="ngModel" required minlength="4">
+              <div *ngIf="!name?.valid && (name?.dirty || name?.touched)">
+                <span *ngIf=" name.errors?.['required']" class="text-danger">
+                  Please enter your name
+                </span>
+                <span *ngIf="name.errors?.['minlength']" class="text-danger">
+                  Name must be at least 4 characters long.
+                </span>
+              </div>
+            </div>
+          </div>
+          <div class="form-group row" >
+            <label for="inputPassword3" class="col-sm-2 col-form-label" >Age</label>
+            <div class="col-sm-7">
+              <input type="text" class="form-control" name="passengerAge" [(ngModel)]="passenger.passengerAge" #age="ngModel" required  pattern="[0-9]{0,2}" numValidator>
+              <div *ngIf="!age?.valid && (age?.dirty || age?.touched)">
+                <span *ngIf=" age.errors?.['numValidate'] "  class="text-danger">
+                  Please enter your age
+                </span>
+                <span *ngIf=" age.errors?.['pattern']"  class="text-danger">
+                  Please enter valid age
+                </span>
+             
+              </div>
+          </div>
+          </div>
+          <div class="form-group row" >
+            <label for="inputPassword3" class="col-sm-2 col-form-label" >Gender</label>
+            <div class="col-sm-7">
+              Male  <input type="radio" name="passengerGender" id="inputPassword3" value="Male" [(ngModel)]="passenger.passengerGender">&nbsp;&nbsp;
+              Female  <input type="radio" name="passengerGender" id="inputPassword3" value="Female" [(ngModel)]="passenger.passengerGender">
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="inputPassword3" class="col-sm-2 col-form-label" >AadharNo</label>
+            <div class="col-sm-7">
+              <input type="text" class="form-control" name="passengerAadhar"  [(ngModel)]="passenger.passengerAadhar" #adhar="ngModel" required minlength="12" pattern="\d+" maxlength="12">
+              <div *ngIf="!adhar?.valid && (adhar?.dirty || adhar?.touched)">
+         
+                <span *ngIf=" adhar.errors?.['required']"  class="text-danger">
+                  Please enter your Aadhar
+                </span>
+                <span *ngIf="adhar.errors?.['minlength']" class="text-danger">
+                  Aadhar must be at least 12 characters long.
+                </span>
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="hideModal()">Close</button>
+
+            <button type="submit" class="btn btn-success" [disabled]="form3.invalid" >Save</button>
+          </div>
+
+
+          </form>
+
+      </div>
+      </div>
+    </div>
+  </div>
+
+</div>

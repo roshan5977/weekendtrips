@@ -1,0 +1,14 @@
+.traveller-page{
+  background: linear-gradient(45deg,rgba(0, 0, 255, 0.46),rgba(182, 182, 182, 0.296));
+padding: 30px;
+}
+.row{
+  margin: 10px;
+}
+label{
+  margin-right: 20px;
+}
+.custompass{
+  background: linear-gradient(45deg,rgba(255, 255, 255, 0.245),rgba(0, 0, 255, 0.449));
+  backdrop-filter: blur(3px);
+}

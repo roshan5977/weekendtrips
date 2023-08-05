@@ -1,0 +1,45 @@
+eureka:
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
+  instance:
+    hostname: localhost
+
+server:
+  port: 2020
+  
+  
+spring:
+  application:
+    name: GATEWAY-SERVICE
+  cloud:
+    gateway:
+      routes:
+       - id: weekendtrip-service
+         uri: lb://WEEKENDTRIP-SERVICE
+         predicates:
+          - Path=/weekendtrip/** 
+       - id: security-service
+         uri: lb://SECURITY-SERVICE
+         predicates:
+          - Path=/security/** 
+       - id: traveller-service
+         uri: lb://TRAVELLER-SERVICE
+         predicates:
+          - Path=/traveller/** 
+       - id: report-service
+         uri: lb://REPORT-SERVICE
+         predicates:
+          - Path=/report/** 
+       - id: payment-service
+         uri: lb://PAYMENT-SERVICE
+         predicates:
+          - Path=/payment/** 
+       
+
+        
+
+            
+

@@ -1,0 +1,64 @@
+
+.content{
+    bottom: 20px;
+    margin-top: 90px;
+
+
+      /* z-index: -2; */
+  
+}
+*{
+  color: black;
+}
+travellerDetails
+{
+  color: brown;
+}
+
+#bck::before{
+  content: "";
+  background: url('https://i.ibb.co/QrWLHps/week10.png');
+  /* background-color: var(--aysh); */
+  
+  opacity: 0.04;
+  z-index: -1;
+  top: 150px;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: 20%;
+  position: absolute;
+  /* transform: rotate(-70deg); */
+}
+.card {
+  border: none;
+  border-radius: 5px;
+  box-shadow: 0px 2px 10px rgba(0,0,0,0.1);
+}
+
+.card-header {
+  border-radius: 5px 5px 0 0;
+}
+
+.form-control:focus {
+  box-shadow: none;
+  border-color: #4dabf5;
+}
+
+.btn-primary {
+  background-color: #4dabf5;
+  border-color: #4dabf5;
+}
+
+.btn-primary:hover {
+  background-color: #4dabf5;
+  border-color: #4dabf5;
+}
+
+/* .container{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+} */

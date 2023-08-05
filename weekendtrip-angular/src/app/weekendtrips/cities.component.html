@@ -1,0 +1,69 @@
+
+  <!-- <div class="custompass">
+    <div class="container">
+      <div class="row" >
+        <div class="col-sm-4 " *ngFor="let city of cities" >
+          <div class="card customcard">
+            <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light" (click)="gotoPackeges(city.cityId)">
+              <img src="{{city.cimageUrl}}" width="inherit" height="300px"/>
+                <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
+            </div>
+            <div class="card-body">
+              <h5 class="card-title text-success"> {{city.cityName}}</h5>
+          <a class="btn btn-primary" [routerLink]="['/packages',city.cityId]" >Go to pakeges</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div> -->
+
+<div class="main-c">
+  <br><br><br><br><br>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-2 col-md-4 col-lg-4" *ngFor="let city of cities" >
+ 
+        <div class="card"  style="margin: 50px;">
+          <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="dark">
+            <img [src]=city.cimageUrl width="100%" height="300px" (click)="gotoPackeges(city.cityId)" /> 
+          </div>
+          <div class="card-body">
+            <h4 class="card-title text-success heading " style="  font-family: 'Roboto', 'Segoe UI', sans-serif;"><i class="fa-solid fa-location-dot fa-beat-fade"></i> {{city.cityName}}</h4>
+           Rating: <i class="fa-sharp fa-solid fa-star" style="color: gold;"></i><i class="fa-sharp fa-solid fa-star" style="color: gold;"></i><i class="fa-sharp fa-solid fa-star" style="color: gold;"></i><i class="fa-sharp fa-solid fa-star" style="color:gold;"></i><i class="fa-sharp fa-regular fa-star" style="color:gold;"></i><br>    
+           <br> <a class="btn" [routerLink]="['/packages',city.cityId]" ><b>Go to packages</b></a>
+            <!-- <h5>
+              <b><i>Category</i></b> :{{pack.packageCategory}}
+            </h5>
+            <div style="background-color: aqua;height: 150px; overflow: hidden;" >
+              <small style="height: 200px;" >{{pack.packageDescription}}</small>
+            </div>
+            <br>
+            <button type="button" class="btn btn-warning  btn-sm"routerLink="/cities" >Back</button>&nbsp;
+        <button type="button" class="btn btn-primary  btn-sm" routerLink="/place">Places</button>&nbsp;
+         <button type="submit" class="btn btn-success btn-sm" (click)="bookNow(pack.packageId)" >BookNow</button>
+          </div> -->
+        </div>
+     
+    </div>
+  </div>
+  </div>
+</div>
+ <!-- <br><br><br><br><br>
+ <div class="container ">
+ <div class="row">
+  <div class="col-sm-4 " *ngFor="let city of cities" style="margin-bottom: 30px;" >
+  <div class="flip" style="background: url({{city.cimageUrl}});">
+    <div class="content" >
+        <div class="front" >
+            <h2>{{city.cityName}}</h2>
+        </div>
+        <div class="back">
+            <button class="btn btn-success"  [routerLink]="['/packages',city.cityId]"> Go to Packages</button>
+        </div>
+    </div>
+  </div>
+  </div>
+ </div>
+</div> -->

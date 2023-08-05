@@ -1,0 +1,54 @@
+
+<form [formGroup]="PackForm" novalidate (ngSubmit)="onSubmit()">
+
+<mat-form-field appearance="fill" >
+  <mat-label>Select an option</mat-label>
+  <mat-select [(value)]="selected" onchange="send()">
+    <mat-option>None</mat-option>
+    <mat-option  value="{{city.cityName}}" *ngFor="let city of cityarr">{{city.cityName}}</mat-option>
+  </mat-select>
+</mat-form-field>
+
+<p>You selected: {{selected}}</p>
+
+
+
+  <mat-card class="shipping-card">
+  <mat-card-header>
+    <mat-card-title>Add Package for weekend package</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <div class="row">
+      <div class="col">
+        <mat-form-field class="full-width">
+            <input matInput placeholder="packageName" formControlName="packageName">
+        </mat-form-field>
+      </div>
+      <div class="col">
+        <mat-form-field class="full-width">
+            <input matInput placeholder="packageCategory" formControlName="packageCategory">
+        </mat-form-field>
+      </div>
+      <div class="col">
+        <mat-form-field class="full-width">
+            <input matInput placeholder="packageDescription" formControlName="packageDescription">
+        </mat-form-field>
+      </div>
+      <div class="col">
+        <mat-form-field class="full-width">
+            <input matInput placeholder="packagePrice" formControlName="packagePrice">
+        </mat-form-field>
+      </div>
+      <div class="col">
+        <mat-form-field class="full-width">
+            <input matInput placeholder="pimageUrl" formControlName="pimageUrl">
+        </mat-form-field>
+      </div>
+    </div>
+  </mat-card-content>
+  <mat-card-actions>
+    <button mat-raised-button mat-dialog-close color="primary" type="submit" [disabled]="!PackForm.valid" mat-dialog-close >Submit</button>
+    <button mat-raised-button mat-dialog-close color="warn" >Close</button>
+  </mat-card-actions>
+</mat-card>
+</form>

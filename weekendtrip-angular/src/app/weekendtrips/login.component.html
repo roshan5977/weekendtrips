@@ -1,0 +1,417 @@
+<section>
+  <!-- <div class="colour"></div>
+  <div class="colour"></div>
+  <div class="colour"></div> -->
+  <div class="box">
+    <div class="square" style="--i: 0"></div>
+    <div class="square" style="--i: 1"></div>
+    <div class="square" style="--i: 2"></div>
+    <div class="square" style="--i: 3"></div>
+    <div class="square" style="--i: 4"></div>
+    <div class="container">
+      <div class="form">
+        <h2>Login Form</h2>
+
+
+
+
+
+
+        <form #from="ngForm" (ngSubmit)="saveLogin(from)" novalidate>
+
+          <div class="input__box">
+            <!-- Email input -->
+            <label class="form-label" for="form2Example1" >Email address</label>
+            <input
+              type="email"
+              id="form2Example1"
+              class="form-control"
+              name="email"
+              required
+              email
+              [(ngModel)]="login.email"
+              #email="ngModel"
+            />
+            <div *ngIf="!email?.valid && (email?.dirty || email?.touched)" class="error">
+              <div *ngIf="email.errors?.['required']"  class="text-danger">
+                Email is required
+              </div>
+             <div *ngIf="email.errors?.['email']"  class="text-danger"> 
+                Invalid Email
+              </div> 
+            </div>
+          </div>
+          <div class="input__box">
+            <!-- Password input -->
+            <label class="form-label" for="form2Example2">Password</label>
+            <input
+              type="password"
+              id="form2Example2"
+              class="form-control"
+              name="password"
+              [(ngModel)]="login.password"
+              required
+              #pass="ngModel"
+            />
+            <div *ngIf="!pass?.valid && (pass?.dirty || pass?.touched)" class="error">
+              <div *ngIf="pass.errors?.['required']" class="text-danger">
+                Password is required
+              </div>
+            
+          </div>
+          
+          </div>
+          <div class="row mb-4">
+            <div class="col d-flex justify-content-center">
+              <!-- Checkbox -->
+              <!-- <div class="form-check">
+                <input
+                  class="form-check-input"
+                  type="checkbox"
+                  value=""
+                  id="form2Example34"
+                  checked
+                />
+                <label class="form-check-label" for="form2Example34">
+                  Remember me
+                </label>
+              </div> -->
+            </div>
+
+            <div class="col">
+              <!-- Simple link -->
+              <a href="#!">Forgot password?</a>
+            </div>
+
+            <div class="input__box">
+              <button type="submit" class="btn btn-primary btn-block mb-4">
+                Sign in
+              </button>
+            </div>
+            <p>
+              Not a member?
+              <input
+                class="btn btn-primary"
+                type="buttton"
+                (click)="showModal()"
+                value="Register"
+              />
+            </p>
+          </div>
+          <!-- <p>or sign up with:</p>
+          <button type="button" class="btn btn-secondary btn-floating mx-1">
+            <i class="fab fa-facebook-f"></i>
+          </button>
+
+          <button type="button" class="btn btn-secondary btn-floating mx-1">
+            <i class="fab fa-google"></i>
+          </button>
+
+          <button type="button" class="btn btn-secondary btn-floating mx-1">
+            <i class="fab fa-twitter"></i>
+          </button>
+          <button type="button" class="btn btn-secondary btn-floating mx-1">
+            <i class="fab fa-github"></i>
+          </button> -->
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+
+<!-- Register buttons -->
+<!--button add passenger-->
+<!--modal-->
+
+<div
+  style="display: none"
+  class="modal"
+  tabindex="-1"
+  style="display: block"
+  *ngIf="this.showmodal"
+>
+  <div class="modal-dialog">
+    <div class="modal-content"  >
+      <div class="modal-header">
+        <h1 class="modal-title" >Register</h1>
+
+        <span
+          aria-hidden="true"
+          class="close"
+          data-dismiss="modal"
+          aria-label="Close"
+          (click)="hideModal()"
+        >
+          <i class="fas fa-xmark"> </i>
+        </span>
+      </div>
+      <div class="modal-body">
+        <form
+          #from1="ngForm"
+          style="width: 500px"
+          (ngSubmit)="registerUser(from1)"
+          novalidate
+        >
+          <table [cellPadding]="5">
+            <tr>
+              <td>
+                <label class="form-label" for="form2Example2"> First Name</label>
+              </td>
+              <td>
+                <!-- Email input -->
+                <input
+                  type="text"
+                  id="form2Example2"
+                  class="form-control"
+                  name="firstname"
+                  pattern="^[a-zA-Z]+$"
+                  [(ngModel)]="register.firstname" 
+                   #firstname="ngModel"
+                  required
+                />
+                <div *ngIf="!firstname?.valid && (firstname?.dirty || firstname?.touched)">
+                <span *ngIf=" firstname.invalid" class="text-danger">
+                  Please enter your firstname
+                </span>
+                <span *ngIf="firstname.errors?.['minlength']" class="text-danger">
+                  Name must be at least 4 characters long.
+                </span>
+              </div>
+              </td>
+             
+              <!-- </div>  -->
+            </tr>
+            <tr>
+              <td>
+                <label class="form-label" for="form2Example2">Last Name</label>
+              </td>
+              <td>
+                <!-- Email input -->
+                <input
+                  type="text"
+                  id="form2Example2"
+                  class="form-control"
+                  name="lastname"
+                  pattern="^[a-zA-Z]+$"
+                  [(ngModel)]="register.lastname"
+                  required
+                  #lastname='ngModel'
+                />
+                <div *ngIf="!lastname?.valid && (lastname?.dirty || lastname?.touched)">
+                  <span *ngIf=" lastname.invalid" class="text-danger">
+                    Please enter your lastname
+                  </span>
+                  <span *ngIf="lastname.errors?.['minlength']" class="text-danger">
+                    Name must be at least 4 characters long.
+                  </span>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <label class="form-label" for="form2Example2">Age</label>
+              </td>
+              <td>
+                <input
+                  type="text"
+                  id="form2Example2"
+                  class="form-control"
+                  name="age"
+                  [(ngModel)]="register.age"
+                  required
+                  maxlength="2"
+                  minlength="1"
+                  pattern="[0-9]{0,3}"
+                  #age='ngModel'
+                  numValidator 
+                />
+                <div *ngIf="!age?.valid && (age?.dirty || age?.touched)">
+                  <span *ngIf=" age.errors?.['numValidate'] "  class="text-danger">
+                    Please enter your age
+                  </span>
+                  <span *ngIf=" age.errors?.['pattern']  "  class="text-danger">
+                    Please enter valid age
+                  </span>  
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <label class="form-label" for="form2Example2">Gender :-</label>
+              </td>
+              <td>
+                &nbsp;<input
+                  type="radio"
+                  name="gender"
+                  id="form2Example2"
+                  value="Male"
+                  [(ngModel)]="register.gender"
+                  required
+                />  Male <i class="fas fa-person"></i> &nbsp; &nbsp;
+                <input
+                  type="radio"
+                  name="gender"
+                  id="form2Example2"
+                  value="Female"
+                  [(ngModel)]="register.gender"
+                  required
+                />
+                
+                Female <i class="fas fa-person-dress"></i>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <label class="form-label" for="form2Example1"
+                  >Email address</label
+                >
+              </td>
+              <td>
+                <input
+                  type="email"
+                  id="form2Example1"
+                  class="form-control"
+                  name="email"
+                  [(ngModel)]="register.email"
+                  required
+                  email
+                  #email="ngModel"
+                />
+                <div *ngIf="!email?.valid && (email?.dirty || email?.touched)">
+                  <span *ngIf=" email.errors?.['required']" class="text-danger">
+                    Please enter your email
+                  </span>
+                  <span *ngIf="email.errors?.['email']" class="text-danger">
+                   Invalid email
+                  </span>
+                </div>
+                <span *ngIf="emailArr.includes(email.value)" class="text-danger">
+                   Email already exist
+                 </span>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <label class="form-label" for="form2Example2">Password</label>
+              </td>
+              <td style="display: flex;">
+                <input
+                  type="password"
+                  id="form2Example2"
+                  class="form-control"
+                  name="password"
+                  [(ngModel)]="register.password"
+                  required
+                  minlength="7"
+                  #password="ngModel"
+                  matInput [type]="hide ? 'password' : 'text' "/>
+                  <button
+                  matSuffix
+                  (click)="hide = !hide"
+                  [attr.aria-label]="hide ? 'Show password' : 'Hide password'"
+                  [attr.aria-pressed]="!hide"
+                  style="border: 0cm"
+                >
+                <i class="fa-regular fa-eye{{ hide ? '-slash' : '' }} fa-sm"></i>
+                </button>                  
+                </td>
+             
+                <!-- <td> -->
+                <div *ngIf="!password?.valid && (password?.dirty || password?.touched)">
+                  <span *ngIf=" password.errors?.['required']" class="text-danger">
+                    Please enter your password
+                  </span>
+                  <span *ngIf="password.errors?.['minlength']" class="text-danger">
+                   password should be min 7 character
+                  </span>
+                </div>
+              <!-- </td> -->
+            </tr>
+            <tr>
+              <td>
+                <label class="form-label" for="form2Example2">Confirm Password</label>
+              </td>
+              <td>
+                <input
+                  type="password"
+                  id="form2Example2"
+                  class="form-control"
+                  name="password1"
+                  ngModel
+                  required
+               
+                  #password1="ngModel"
+                />
+                <!-- <div *ngIf="!password1?.valid && (password1?.dirty || password1?.touched)"> -->
+                  <!-- <span *ngIf=" password1.invalid" class="text-danger">
+                    Please Re-enter your Password
+                  </span> -->
+                  <!-- <span *ngIf="password.errors?.['minlength']" class="text-danger">
+                   password should be min 7 character
+                  </span> -->
+                  <span *ngIf="password1.value != register.password  && (password1?.dirty || password1?.touched)" class="text-danger">
+                   password not matched
+                   </span>
+                <!-- </div> -->
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <label class="form-label" for="form2Example2"
+                  >MobileNumber</label
+                >
+              </td>
+              <td>
+                <input
+                  type="text"
+                  id="form2Example2"
+                  class="form-control"
+                  name="mobileNumber"
+                  [(ngModel)]="register.mobileNumber"
+                  required
+                  minlength="10"
+                  maxlength="10"
+                  pattern="[6-9][0-9]{9}"
+                  #mobilenum="ngModel"
+                />
+                <div *ngIf="!mobilenum?.valid && (mobilenum?.dirty || mobilenum?.touched)">
+                  <span *ngIf=" mobilenum.errors?.['required']" class="text-danger">
+                    Please enter your mobilenumber
+                  </span>
+                  <span *ngIf="mobilenum.errors?.['pattern']" class="text-danger">
+                    Invalid no:- Number starts with 6 to 9 only
+                  </span>
+                </div>
+              </td>
+            </tr>
+          </table>
+
+          <!-- Password input -->
+          <!-- 2 column grid layout for inline styling -->
+
+          <!-- Submit button -->
+          <div class="modal-footer" style="width:481px;">
+          
+            <button
+            
+              class="btn btn-secondary"
+              data-dismiss="modal"
+
+         
+
+              (click)="hideModal()"
+            >
+              Close
+            </button>
+            <button type="submit"  [disabled]="from1.invalid" class="btn btn-success">Save</button>
+            &nbsp; &nbsp; &nbsp;
+          </div>
+          <!-- Register buttons -->
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

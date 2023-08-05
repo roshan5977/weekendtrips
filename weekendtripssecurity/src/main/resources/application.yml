@@ -1,0 +1,34 @@
+server:
+  port: 9102
+
+spring:
+  application:
+    name: security-service
+  datasource:
+     url: jdbc:mysql://${MYSQL_HOST:localhost}:${MYSQL_PORT:3306}/weekendtrip
+     username: ${MYSQL_USER:root}
+     password: ${MYSQL_PASSWORD:root}
+     driver-class-name: com.mysql.cj.jdbc.Driver
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+    database: mysql
+    database-platform: org.hibernate.dialect.MySQL5Dialect
+
+application:
+  security:
+    jwt:
+      secret-key: 5A7234753778214125442A472D4B6150645267556B58703273357638792F423F
+eureka:
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
+  instance:
+    hostname: localhost 
+

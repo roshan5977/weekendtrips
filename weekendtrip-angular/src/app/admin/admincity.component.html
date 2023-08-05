@@ -1,0 +1,43 @@
+<!-- <h1>all places</h1>
+<div *ngFor="let city of cities" style="margin-left: 50px;">
+<div class="card" style="width:250px">
+  <img [src]=city.cImageUrl style="width:230px" class="card-img-top" alt="Fissure in Sandstone"/>
+  <div class="card-body">
+    <h5 class="card-title">{{city.cityName}}</h5>
+    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+    <button class="btn btn-danger" >Remove</button>
+    <button [routerLink]="['/admin/main/editcitydetail',city.cityId]" class="btn btn-primary">Button</button>
+  </div>
+</div>
+</div> -->
+<div *ngFor="let city of cities"  style="margin: 15px; display: inline-block;">
+<mat-card class="example-card" style="width:250px">
+  <mat-card-header>
+    <div mat-card-avatar class="example-header-image" style="height:inherit;" ></div>
+    <mat-card-title>{{city.cityName}}</mat-card-title>
+    <mat-card-subtitle>Exclusive</mat-card-subtitle>
+  </mat-card-header>
+  <img mat-card-image  [src]=city.cimageUrl alt="Photo of a Shiba Inu" height="200px">
+  <mat-card-content>
+   
+  </mat-card-content>
+  <mat-card-actions>
+    <!-- <button class="btn btn-primary" style="margin-right: 40px;"  mat-button (click)="removeCity(city.cityId)" >Remove</button> -->
+    <!-- <button  [routerLink]="['/admin/main/editcitydetail',city.cityId]" class="btn btn-danger"  mat-button>Show</button> -->
+    <button class="btn btn-primary" style="margin-right: 40px;" (click)="removeCity(city.cityId)" >{{city.status}}</button>
+    <button  [routerLink]="['/admin/main/editcitydetail',city.cityId]" class="btn btn-danger"  >Show</button>
+  </mat-card-actions>
+</mat-card>
+</div>
+
+
+
+<!-- <mat-card class="example-card" style="width:250px" >
+  <div routerLink="/admin/main/addcity">
+  <img src="https://imgs.search.brave.com/0iFE-AKlykLSP5CZQkuU22z2HT3TYvBLaagyR7pPHHo/rs:fit:474:225:1/g:ce/aHR0cHM6Ly90c2Ux/Lm1tLmJpbmcubmV0/L3RoP2lkPU9JUC5u/cGZ3ampWMUNxWERa/ZGpnd3I4TWJnSGFI/YSZwaWQ9QXBp" alt="">
+  <mat-card-content>
+    <button class="btn btn-primary" style="margin-left: 40px;"  mat-button >Add new city</button>
+  </mat-card-content>
+</div>
+</mat-card> -->
+

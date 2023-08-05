@@ -1,0 +1,40 @@
+<h1>admin settings</h1>
+<button mat-button color="primary" onclick="showusers()">Primary</button>
+<table class="table align-middle mb-0 bg-white">
+
+    <thead class="bg-light">
+      <tr>
+        <th>Email</th>
+        <th>Role</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr *ngFor="let user of users">
+        <td>
+          <div class="d-flex align-items-center">
+            <div class="ms-3">
+              <!-- <p class="fw-bold mb-1">John Doe</p> -->
+              <p class="text-muted mb-0">{{user.email}}</p>
+            </div>
+          </div>
+        <td>
+          <span class="badge badge-success rounded-pill d-inline">{{user.role}}</span>
+        </td>
+        <td>
+            <section class="example-section">
+                <mat-slide-toggle
+                    class="example-margin"
+                    [color]="color"
+                    [checked]="user.check"
+                    [disabled]="disabled"
+                    (change)="onToggleChange(user.email)">
+              
+                </mat-slide-toggle>
+              </section>
+        </td>
+      </tr>
+    </tbody>
+
+  </table>

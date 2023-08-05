@@ -1,0 +1,466 @@
+<div class="maic-c">
+  <div class="contaier">
+    <div *ngIf="this.repo.showpaymentsucess">
+      <div class="row">
+        <div class="col-12">
+          <img
+            src="https://ruperhat.com/wp-content/uploads/2020/06/Paymentsuccessful21.png"
+            alt="" height="70%" width="90%" style="align-items: center; "
+          />
+        </div>
+        
+      </div>
+      <button mat-flat-button color="accent" routerLink="/weekend"  style=" margin-left: 50%;" >Go to Home Page</button>
+    </div>
+
+    <div class="maic-c">
+      <div class="contaier">
+        <div *ngIf="this.repo.showpaymentfailure">
+          <div class="row">
+            <div class="col-12">
+              <img
+                src="https://user-images.githubusercontent.com/11629214/35469831-ad288d00-0378-11e8-9019-dd1f5eb4bea3.png"
+                alt="" height="70%" width="90%" style="align-items: center;"
+              />
+            </div>
+         
+          </div>
+          <button mat-flat-button color="accent" routerLink="/weekend" style=" margin-left: 50%;" >Go to Home Page</button>
+        </div>
+
+    <div class="row" *ngIf="!this.repo.showpaymentsucess && !this.repo.showpaymentfailure ">
+      <div class="col-4">
+        <h2>TotalPrice:{{ this.totalprice | currency : "INR" }}</h2>
+        <div class="main-payment">
+          <img
+            class="img-s"
+            style="width: 80px"
+            src="https://tse3.mm.bing.net/th?id=OIP.THjzMyAkbflU6kuyfezNTAAAAA&pid=Api&P=0"
+            (click)="changeupi()"
+          /><br />
+          <img
+            class="img-s"
+            style="width: 80px"
+            src="https://tse2.mm.bing.net/th?id=OIP.w2sZ63LzwZuY_ohIpi50YwHaHa&pid=Api&P=0"
+            (click)="changecard()"
+          /><br />
+          <img
+            class="img-s"
+            style="width: 80px"
+            src="https://tse1.mm.bing.net/th?id=OIP.9VqVd0os-0inlF5HYHXl9QHaHa&pid=Api&P=0"
+            (click)="changenet()"
+          />
+        </div>
+      </div>
+      <div>
+        <button class="btn btn-success" (click)="showcoupons()">Coupons</button>
+      </div>
+      <div class="col-6">
+        <div class="sub-payment">
+          <div
+            class="d-flex justify-content-center container container"
+            *ngIf="!this.repo.showsucessfull"
+          >
+            <div class="row">
+              <div *ngIf="cupi">
+                <div class="container">
+                  <div class="row custuomupi">
+                    <div class="col-3">
+                      <img
+                        class="img-s"
+                        src="https://img.uxwing.com/wp-content/themes/uxwing/download/brands-social-media/phonepe-logo-icon.png"
+                        (click)="sucessfull()"
+                      />
+                    </div>
+                    <div class="col-3">
+                      <img
+                        class="img-s"
+                        src="data:image/jpeg;base64,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"
+                        (click)="sucessfull()"
+                        />
+                    </div>
+                    <div class="col-3">
+                      <img
+                        class="img-s"
+                        src="https://tse2.mm.bing.net/th?id=OIP.EQBGFKncZMz6QM6QI-hQVgHaHa&pid=Api&P=0"
+                        (click)="sucessfull()"
+                        />
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- * this div for card details -->
+
+              <div *ngIf="ccard">
+                <section class="h-100 h-custom">
+                  <div class="container h-100 py-5">
+                    <div
+                      class="row d-flex justify-content-center align-items-center h-100"
+                    >
+                      <div class="col">
+                        <div
+                          class="card shadow-2-strong mb-5 mb-lg-0"
+                          style="border-radius: 16px"
+                        >
+                          <div class="card-body p-4">
+                            <div class="row">
+                              <div
+                                class="col-md-6 col-lg-4 col-xl-3 mb-4 mb-md-0"
+                              >
+                                <form>
+                                  <div class="d-flex flex-row pb-3">
+                                    <div class="d-flex align-items-center pe-2">
+                                      <input
+                                        class="form-check-input"
+                                        type="radio"
+                                        name="radioNoLabel"
+                                        id="radioNoLabel1v"
+                                        value=""
+                                        aria-label="..."
+                                        checked
+                                      />
+                                    </div>
+                                    <div class="rounded border w-100 p-3">
+                                      <p class="d-flex align-items-center mb-0">
+                                        <i
+                                          class="fab fa-cc-mastercard fa-2x text-dark pe-2"
+                                        ></i
+                                        >Credit Card
+                                      </p>
+                                    </div>
+                                  </div>
+                                  <div class="d-flex flex-row pb-3">
+                                    <div class="d-flex align-items-center pe-2">
+                                      <input
+                                        class="form-check-input"
+                                        type="radio"
+                                        name="radioNoLabel"
+                                        id="radioNoLabel2v"
+                                        value=""
+                                        aria-label="..."
+                                      />
+                                    </div>
+                                    <div class="rounded border w-100 p-3">
+                                      <p class="d-flex align-items-center mb-0">
+                                        <i
+                                          class="fab fa-cc-visa fa-2x fa-lg text-dark pe-2"
+                                        ></i
+                                        >Debit Card
+                                      </p>
+                                    </div>
+                                  </div>
+                                  <div class="d-flex flex-row">
+                                    <div class="d-flex align-items-center pe-2">
+                                      <input
+                                        class="form-check-input"
+                                        type="radio"
+                                        name="radioNoLabel"
+                                        id="radioNoLabel3v"
+                                        value=""
+                                        aria-label="..."
+                                      />
+                                    </div>
+                                    <div class="rounded border w-100 p-3">
+                                      <p class="d-flex align-items-center mb-0">
+                                        <i
+                                          class="fab fa-cc-paypal fa-2x fa-lg text-dark pe-2"
+                                        ></i
+                                        >PayPal
+                                      </p>
+                                    </div>
+                                  </div>
+                                </form>
+                              </div>
+                              <div class="col-md-6 col-lg-4 col-xl-6">
+                                <div class="row">
+                                  <div class="col-12 col-xl-6">
+                                    <div class="form-outline mb-4 mb-xl-5">
+                                      <input
+                                        type="text"
+                                        id="typeName"
+                                        class="form-control form-control-lg"
+                                        siez="17"
+                                        placeholder="John Smith"
+                                      />
+                                      <label class="form-label" for="typeName"
+                                        >Name on card</label
+                                      >
+                                    </div>
+
+                                    <div class="form-outline mb-4 mb-xl-5">
+                                      <input
+                                        type="text"
+                                        id="typeExp"
+                                        class="form-control form-control-lg"
+                                        placeholder="MM/YY"
+                                        size="7"
+                                        id="exp"
+                                        minlength="7"
+                                        maxlength="7"
+                                      />
+                                      <label class="form-label" for="typeExp"
+                                        >Expiration</label
+                                      >
+                                    </div>
+                                  </div>
+                                  <div class="col-12 col-xl-6">
+                                    <div class="form-outline mb-4 mb-xl-5">
+                                      <input
+                                        type="text"
+                                        id="typeText"
+                                        class="form-control form-control-lg"
+                                        siez="17"
+                                        placeholder="1111 2222 3333 4444"
+                                        minlength="19"
+                                        maxlength="19"
+                                        inputgroup="numaric"
+                                      />
+                                      <label class="form-label" for="typeText"
+                                        >Card Number</label
+                                      >
+                                    </div>
+
+                                    <div class="form-outline mb-4 mb-xl-5">
+                                      <input
+                                        type="password"
+                                        id="typeText"
+                                        class="form-control form-control-lg"
+                                        placeholder="&#9679;&#9679;&#9679;"
+                                        size="1"
+                                        minlength="3"
+                                        maxlength="3"
+                                      />
+                                      <label class="form-label" for="typeText"
+                                        >Cvv</label
+                                      >
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="col-lg-4 col-xl-3">
+                                <div
+                                  class="d-flex justify-content-between"
+                                  style="font-weight: 500"
+                                >
+                                  <p class="mb-2">Subtotal</p>
+                                  <p class="mb-2">
+                                    {{ this.totalprice | currency : "INR" }}
+                                  </p>
+                                </div>
+
+                                <hr class="my-4" />
+
+                                <div
+                                  class="d-flex justify-content-between mb-4"
+                                  style="font-weight: 500"
+                                >
+                                  <p class="mb-2">Total (tax included)</p>
+                                  <p class="mb-2">
+                                    {{ this.totalprice | currency : "INR" }}
+                                  </p>
+                                </div>
+
+                                <button
+                                  type="button"
+                                  class="btn btn-success btn-block btn-lg" 
+                                  (click)="sucessfull()"
+                                >
+                                  <div class="d-flex justify-content-between">
+                                    <span 
+                                      >Confirm payment</span
+                                    >
+                                    <span>{{
+                                      this.totalprice | currency : "INR"
+                                    }}</span>
+                                  </div>
+                                </button>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </section>
+
+                <!-- </button> -->
+
+                <div *ngIf="CreditcardActive"></div>
+              </div>
+              <div *ngIf="cnet">
+                <button class="btn">
+                  <img
+                    class="img-s"
+                    src="https://tse1.mm.bing.net/th?id=OIP.CEfaBuvltYJQ4EoGCbgchgHaEK&pid=Api&P=0"
+                  />SBI
+                </button>
+                <button class="btn">
+                  <img
+                    class="img-s"
+                    src="https://tse2.mm.bing.net/th?id=OIP.M2ZnYTyQmmWyeIv9uSb3PQAAAA&pid=Api&P=0"
+                  />Andhra
+                </button>
+                <button class="btn">
+                  <img
+                    class="img-s"
+                    src="https://tse1.mm.bing.net/th?id=OIP.VlGBR9BfMAUq-7lwP8OFpAHaE1&pid=Api&P=0"
+                  />ICICI
+                </button>
+                <button class="btn">
+                  <img
+                    class="img-s"
+                    src="https://tse4.mm.bing.net/th?id=OIP.WpiHSCrATURr41bM9I-1RgHaEf&pid=Api&P=0"
+                  />HDFC
+                </button>
+                <button class="btn">
+                  <img
+                    class="img-s"
+                    src="https://tse4.mm.bing.net/th?id=OIP.ov8kpeqEouY0Mf3186gSwwAAAA&pid=Api&P=0"
+                  />CANARA
+                </button>
+                <button class="btn">
+                  <img
+                    class="img-s"
+                    src="https://tse3.mm.bing.net/th?id=OIP.esfK3Edl2KyakOEJsQCSbgAAAA&pid=Api&P=0"
+                  />INDIAN
+                </button>
+              </div>
+              <div>
+                <div
+                  class="modal fade"
+                  id="debit-card-modal"
+                  tabindex="-1"
+                  role="dialog"
+                  aria-labelledby="debit-card-modal-label"
+                  aria-hidden="true"
+                >
+                  <div class="modal-dialog modal-lg" role="document">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h5 class="modal-title" id="debit-card-modal-label">
+                          Debit Card Details
+                        </h5>
+                        <button
+                          type="button"
+                          class="close"
+                          data-dismiss="modal"
+                          aria-label="Close"
+                        >
+                          <span aria-hidden="true">&times;</span>
+                        </button>
+                      </div>
+                      <div class="modal-body">
+                        <!-- Debit card form goes here -->
+                      </div>
+                      <div class="modal-footer">
+                        <button
+                          type="button"
+                          class="btn btn-secondary"
+                          data-dismiss="modal"
+                        >
+                          Close
+                        </button>
+                        <button type="button" class="btn btn-primary">
+                          Save Changes
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- --------------------------------------- -->
+<div class="modal" tabindex="-1" *ngIf="this.show" style="display: flex">
+  <div class="modal-dialog ">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title">Coupons</h1>
+        <button
+          type="button"
+          class="close"
+          data-dismiss="modal"
+          aria-label="Close"
+          (click)="hidemodel()"
+        >
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+          <div>
+            <div class="cname">{{coupons[0].couponName}}</div>
+            <h4>{{coupons[0].description}}</h4>
+            <button class="btn btn-sm btn-success" id="apply" (click)="getcoupon1(coupons[0].discount)">apply</button>
+            <div *ngIf='this.checkcoupon'>
+              <h5 class="text-danger">you have already claimed one coupon</h5>
+            </div>
+          </div>
+          <hr>
+          <!--------second coupon-------->
+          <div>
+            <div class="cname">{{coupons[1].couponName}}</div>
+            <h4>{{coupons[1].description}}</h4>
+            <button class="btn btn-sm btn-success" id="apply" (click)="getcoupon2(coupons[1].discount)">apply</button>
+            <div *ngIf='this.checkcoupon1'>
+              <h5 class="text-danger">you have already claimed one coupon</h5>
+            </div>
+          </div>
+          <hr>
+          <!--------third coupon-------->
+          <div>
+            <div class="cname">{{coupons[2].couponName}}</div>
+            <h4>{{coupons[2].description}}</h4>
+            <button class="btn btn-sm btn-success" id="apply" (click)="getcoupon3(coupons[2].discount)">apply</button>
+            <div *ngIf='this.pricecheck'>
+              <h5 class="text-danger">coupon not applied because you price is less than 30000</h5>
+            </div>
+            <div *ngIf='this.checkcoupon2'>
+              <h5 class="text-danger">you have already claimed one coupon</h5>
+            </div>
+          </div>
+          <hr>
+          <!--------fourth coupon-------->
+          <div>
+            <div class="cname">{{coupons[3].couponName}}</div>
+            <h4>{{coupons[3].description}}</h4>
+            <button class="btn btn-sm btn-success" id="apply" (click)="getcoupon4(coupons[3].discount)">apply</button>
+            <div *ngIf='this.datecheck'>
+              <h5 class="text-danger">coupon not applied because you date fall beyond the first weekend</h5>
+            </div>
+            <div *ngIf='this.checkcoupon3'>
+              <h5 class="text-danger">you have already claimed one coupon</h5>
+            </div>
+          </div>
+          <hr>
+         <!--------fifth coupon-------->
+         <div>
+          <div class="cname">{{coupons[4].couponName}}</div>
+          <h4>{{coupons[4].description}}</h4>
+          <button class="btn btn-sm btn-success" id="apply" (click)="getcoupon5(coupons[4].discount)">apply</button>
+          <div *ngIf='this.passengercheck'>
+            <h5 class="text-danger">coupon not applied because your passengers are more than 2</h5>
+          </div>
+          <div *ngIf='this.checkcoupon4'>
+            <h5 class="text-danger">you have already claimed one coupon</h5>
+          </div>
+        </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="hidemodel()">
+          Close
+        </button>
+        <button type="button" class="btn btn-primary" (click)="hidemodel()">Go to Payment</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+

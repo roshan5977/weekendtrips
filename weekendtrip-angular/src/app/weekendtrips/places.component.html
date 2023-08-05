@@ -1,0 +1,55 @@
+<div>
+  <br /><br /><br />
+ 
+<div class="timeline">
+  <div class="container one">
+    <div class="content" *ngFor="let place of placesArry; let i = index">
+      <div class="container left" *ngIf="i % 2 == 0">
+        <figure class="figure">
+          <h1 style="text-align: center; color:rgba(255, 255, 255, 0.699)">
+            Day-{{ i + 1 }} ({{ place.placeName }})
+          </h1>
+          <img
+            [src]="place.placeImgUrl"
+            class="figure-img img-fluid rounded"
+            height="300px"
+            style="border-radius: 10px;"
+          />
+          <figcaption class="figure-caption"></figcaption>
+        </figure>
+        <div class="two">
+          <h2>Hotel Name : Paradise</h2>
+          <h2>Cab Number : 1729</h2>
+          <h2>Driver Number : 12345678901</h2>
+          <h2>Gender : Male</h2>
+        </div>
+      </div>
+      <div class="container right" *ngIf="i % 2 == 1">
+        <figure class="figure">
+          <h1 style="text-align: center; color: white">
+            Day-{{ i + 1 }} ({{ place.placeName }})
+          </h1>
+          <img
+            [src]="place.placeImgUrl"
+            class="figure-img img-fluid rounded"
+            height="300px"
+          />
+          <figcaption class="figure-caption"></figcaption>
+        </figure>
+        <div class="three">
+          <h2>Hotel Name : Taj Banjara</h2>
+          <h2>Cab Number : 1235</h2>
+          <h2>Driver Number: 09876543211</h2>
+          <h2>Gender : Female</h2>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="buttonFor">
+  <button class="btn btn-success" (click)="bookNow(this.pId)"> Book Now</button>  
+
+</div>
+
+
+</div>

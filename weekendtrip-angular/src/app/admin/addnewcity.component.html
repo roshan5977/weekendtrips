@@ -1,0 +1,27 @@
+
+<form [formGroup]="cityForm"  (ngSubmit)="onSubmit()">
+  <mat-card class="shipping-card">
+  <mat-card-header>
+    <mat-card-title>Add city for weekend package</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <div class="row">
+      <div class="col">
+        <mat-form-field class="full-width">
+            <input matInput placeholder="cityname" formControlName="cityName">
+        </mat-form-field>
+      </div>
+      <div class="col">
+        <mat-form-field class="full-width">
+            <input matInput placeholder="cimageUrl" formControlName="cimageUrl">
+        </mat-form-field>
+      </div>
+    </div>
+  </mat-card-content>
+  <mat-card-actions>
+    <button mat-raised-button color="primary" type="submit" [disabled]="!cityForm.valid" mat-dialog-close >Submit</button>
+    <button mat-raised-button mat-dialog-close color="warn" >Close</button>
+  </mat-card-actions>
+</mat-card>
+</form>
+

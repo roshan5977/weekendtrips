@@ -1,0 +1,421 @@
+
+<!-- <mat-toolbar color="primary">
+  <span>Holiday package Admin Section</span>
+  <button mat-raised-button color="primary" style="margin-left: 10px;" routerLink="/weekendpackage">WeekendPackage</button>
+   <button mat-raised-button color="warn" routerLink="/admin/main/auth">logout</button>
+
+  <button mat-raised-button color="primary" style="margin-left: 30px;margin-right: 30px;" routerLink="/admin/main/admincity">Cities</button>
+  <button mat-raised-button color="primary" routerLink="/admin/main/travellordetails">Travellors</button>
+</mat-toolbar>
+<br><br><br> -->
+
+<mat-sidenav-container class="sidenav-container" >
+  <mat-sidenav #drawer class="sidenav" fixedInViewport
+      [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+      [mode]="(isHandset$ | async) ? 'over' : 'side'"
+      [opened]="(isHandset$ | async) === false">
+    <mat-toolbar><i class="fa-solid fa-user" style="margin-right: 10%;">
+    </i> Admin</mat-toolbar>
+    <mat-nav-list>
+      <a mat-list-item routerLink="/admin/main/dashboard"> <i class="fa-solid fa-table-columns" style="margin-right: 5%;"></i> Dashboard</a>
+      <a mat-list-item routerLink="/admin/main/admincity/0"><i class="fa-solid fa-city" style="margin-right: 5%;"></i>All Cities</a>
+      <a mat-list-item routerLink="/admin/main/travellordetails"><i class="fa-solid fa-person-hiking" style="margin-right: 5%;"></i>Show Travellers</a>
+      <a mat-list-item (click)="openAddCity()" ><i class="fa-solid fa-user-plus" style="margin-right: 5%;"></i> Add City</a>
+      <!-- routerLink="/admin/main/addcity" -->
+      <a mat-list-item (click)="openAddPack()"> <i class="fa-solid fa-circle-plus" style="margin-right: 5%;"></i>Add Package</a>
+      <a mat-list-item  (click)="openAddPlace()"> <i class="fa-solid fa-circle-plus" style="margin-right: 5%;"></i>Add place</a>
+      <a mat-list-item routerLink="/admin/main/settings"> <i class="fa-solid fa-gears"style="margin-right: 5%;"></i>Settings</a>
+      <a mat-list-item  (click)="logout()" routerLink="/weekend"> <i class="fa-solid fa-arrow-right-from-bracket" style="margin-right: 5%;"></i>Logout</a>
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <mat-toolbar color="primary" >
+      <button
+        type="button"
+        aria-label="Toggle sidenav"
+        mat-icon-button
+        (click)="drawer.toggle()"
+        *ngIf="isHandset$ | async">
+        <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+      </button>
+      <span>
+        <img src="https://i.ibb.co/5r8FNPm/week5.png" alt="" srcset="" width="100px" height="70px">
+        WeekEndTrips</span>
+      <span class="example-spacer"></span>
+      <mat-slide-toggle [formControl]="toggleControl">Dark Mode</mat-slide-toggle>
+      <!-- <button mat-raised-button color="primary" style="margin-left: 10px;"  (click)="loginPopUp()" >Login</button>
+<img src="https://img.icons8.com/material/512/admin-settings-male.png"  style="width:40px;height:40px"> -->
+    </mat-toolbar>
+
+    <!-- <ngx-ui-loader ></ngx-ui-loader> -->
+    <ngx-ui-loader ></ngx-ui-loader>
+
+    <div ngxUiLoaderBlurred>
+      <router-outlet></router-outlet>
+    </div>
+
+
+  </mat-sidenav-content>
+</mat-sidenav-container>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <!-- Navbar -->
+  <!-- <nav id="main-navbar" class="navbar navbar-expand-lg navbar-light bg-white fixed-top">
+    <div class="container-fluid">
+      <button class="navbar-toggler" type="button" data-mdb-toggle="collapse" data-mdb-target="#sidebarMenu"
+        aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
+        <i class="fas fa-bars"></i>
+      </button>
+
+      <a class="navbar-brand" href="#">
+        <img src="https://mdbcdn.b-cdn.net/img/logo/mdb-transaprent-noshadows.webp" height="25" alt="MDB Logo"
+          loading="lazy" />
+      </a>
+      <form class="d-none d-md-flex input-group w-auto my-auto">
+        <input autocomplete="off" type="search" class="form-control rounded"
+          placeholder='Search (ctrl + "/" to focus)' style="min-width: 225px;" />
+        <span class="input-group-text border-0"><i class="fas fa-search"></i></span>
+      </form>
+
+      <ul class="navbar-nav ms-auto d-flex flex-row">
+        <li class="nav-item dropdown">
+          <a class="nav-link me-3 me-lg-0 dropdown-toggle hidden-arrow" href="#" id="navbarDropdownMenuLink"
+            role="button" data-mdb-toggle="dropdown" aria-expanded="false">
+            <i class="fas fa-bell"></i>
+            <span class="badge rounded-pill badge-notification bg-danger">1</span>
+          </a>
+          <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenuLink">
+            <li>
+              <a class="dropdown-item" href="#">Some news</a>
+            </li>
+            <li>
+              <a class="dropdown-item" href="#">Another news</a>
+            </li>
+            <li>
+              <a class="dropdown-item" href="#">Something else here</a>
+            </li>
+          </ul>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link me-3 me-lg-0" href="#">
+            <i class="fas fa-fill-drip"></i>
+          </a>
+        </li>
+        <li class="nav-item me-3 me-lg-0">
+          <a class="nav-link" href="#">
+            <i class="fab fa-github"></i>
+          </a>
+        </li>
+
+        <li class="nav-item dropdown">
+          <a class="nav-link me-3 me-lg-0 dropdown-toggle hidden-arrow" href="#" id="navbarDropdown"
+            role="button" data-mdb-toggle="dropdown" aria-expanded="false">
+            <i class="united kingdom flag m-0"></i>
+          </a>
+          <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+            <li>
+              <a class="dropdown-item" href="#"><i class="united kingdom flag"></i>English
+                <i class="fa fa-check text-success ms-2"></i></a>
+            </li>
+            <li>
+              <hr class="dropdown-divider" />
+            </li>
+            <li>
+              <a class="dropdown-item" href="#"><i class="flag-poland flag"></i>Polski</a>
+            </li>
+            <li>
+              <a class="dropdown-item" href="#"><i class="flag-china flag"></i>中文</a>
+            </li>
+            <li>
+              <a class="dropdown-item" href="#"><i class="flag-japan flag"></i>日本語</a>
+            </li>
+            <li>
+              <a class="dropdown-item" href="#"><i class="flag-germany flag"></i>Deutsch</a>
+            </li>
+            <li>
+              <a class="dropdown-item" href="#"><i class="flag-france flag"></i>Français</a>
+            </li>
+            <li>
+              <a class="dropdown-item" href="#"><i class="flag-spain flag"></i>Español</a>
+            </li>
+            <li>
+              <a class="dropdown-item" href="#"><i class="flag-russia flag"></i>Русский</a>
+            </li>
+            <li>
+              <a class="dropdown-item" href="#"><i class="flag-portugal flag"></i>Português</a>
+            </li>
+          </ul>
+        </li>
+
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle hidden-arrow d-flex align-items-center" href="#"
+            id="navbarDropdownMenuLink" role="button" data-mdb-toggle="dropdown" aria-expanded="false">
+            <img src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/img (31).webp" class="rounded-circle"
+              height="22" alt="Avatar" loading="lazy" />
+          </a>
+          <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenuLink">
+            <li>
+              <a class="dropdown-item" href="#">My profile</a>
+            </li>
+            <li>
+              <a class="dropdown-item" href="#">Settings</a>
+            </li>
+            <li>
+              <a class="dropdown-item" href="#">Logout</a>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </nav> -->
+  <!-- Navbar -->
+<!-- </header> -->
+<!--Main Navigation-->
+
+<!--Main layout-->
+<!-- <main style="margin-top: 58px;">
+  <div class="container pt-4"></div>
+</main> -->
+<!--Main layout-->
+
+<!-- <div class="sidenav" data-mdb-color="light" style="background-color: #2d2c2c" role="navigation">
+<div id="sidenav-3" class="sidenav" data-mdb-scroll-container="#scroll-container" data-mdb-mode="side" role="navigation">
+  <div class="text-center">
+    <h3 class="py-4">Examples</h3>
+    <hr class="m-0">
+  </div>
+  <ul id="scroll-container" class="sidenav-menu">
+    <li class="sidenav-item">
+      <a class="sidenav-link">
+        <i class="far fa-smile pe-3"></i><span>Link 1</span></a>
+    </li>
+    <li class="sidenav-item">
+      <a class="sidenav-link">
+        <i class="far fa-smile pe-3"></i><span>Link 2</span></a>
+    </li>
+    <li class="sidenav-item">
+      <a class="sidenav-link">
+        <i class="far fa-smile pe-3"></i><span>Link 3</span></a>
+    </li>
+    <li class="sidenav-item">
+      <a class="sidenav-link">
+        <i class="far fa-smile pe-3"></i><span>Link 4</span></a>
+    </li>
+    <li class="sidenav-item">
+      <a class="sidenav-link">
+        <i class="far fa-smile pe-3"></i><span>Link 5</span></a>
+    </li>
+    <li class="sidenav-item">
+      <a class="sidenav-link">
+        <i class="far fa-smile pe-3"></i><span>Link 6</span></a>
+    </li>
+    <li class="sidenav-item">
+      <a class="sidenav-link">
+        <i class="far fa-smile pe-3"></i><span>Link 7</span></a>
+    </li>
+    <li class="sidenav-item">
+      <a class="sidenav-link">
+        <i class="far fa-smile pe-3"></i><span>Link 8</span></a>
+    </li>
+  </ul>
+
+  <div class="text-center" style="min-height: 3rem;">
+    <hr class="mt-0 mb-2">
+    <small>mdbootstrap.com</small>
+  </div>
+</div>
+
+</div> -->
+
+<!-- <div id="full-screen-example" class="sidenav bg-dark" data-mdb-color="light" data-mdb-slim="true" data-mdb-expandable="false" data-mdb-slim-collapsed="true" data-mdb-slim-width="90" data-mdb-mode="side" data-mdb-content="#content">
+  <div class="text-center mt-4">
+    <a class="ripple rounded-circle" data-mdb-color="light" href="#">
+      <img src="https://mdbootstrap.com/img/Photos/Avatars/img%20(29).jpg" alt="avatar" class="rounded-circle img-fluid" style="max-width: 60px;">
+    </a>
+  </div>
+
+  <hr>
+  <ul class="sidenav-menu">
+    <li class="sidenav-item my-3">
+      <a class="sidenav-link p-0 d-flex justify-content-center">
+        <i class="far fa-heart fa-2x"></i></a>
+    </li>
+    <li class="sidenav-item my-3">
+      <a class="sidenav-link p-0 d-flex justify-content-center">
+        <i class="far fa-envelope fa-2x"></i></a>
+    </li>
+    <li class="sidenav-item my-3">
+      <a class="sidenav-link p-0 d-flex justify-content-center">
+        <i class="far fa-user fa-2x"></i></a>
+    </li>
+    <li class="sidenav-item my-3">
+      <a class="sidenav-link p-0 d-flex justify-content-center">
+        <i class="fa fa-cogs fa-2x"></i></a>
+    </li>
+  </ul>
+</div>
+
+
+
+<div id="content" class="page-intro">
+  <div class="mask p-4 text-center">
+    <h1>Natalie Smith</h1>
+    <h2>Portfolio</h2>
+  </div>
+</div>
+
+<!-- Content -->
+<!-- ****************************************************************** -->
+
+<!-- Sidenav -->
+<!--
+<div id="full-screen-example" class="sidenav bg-light" data-mdb-color="dark" data-mdb-mode="side" data-mdb-hidden="false" data-mdb-scroll-container="#scrollContainer">
+  <div class="mt-4">
+    <div id="header-content" class="ps-3">
+      <img src="https://mdbootstrap.com/img/Photos/Avatars/img%20(23).jpg" alt="avatar" class="rounded-circle img-fluid mb-3" style="max-width: 50px;">
+
+      <h4>
+        <span style="white-space: nowrap;">Ann Smith</span>
+      </h4>
+      <p>ann_s@mdbootstrap.com</p>
+    </div>
+    <hr class="mb-0">
+  </div>
+  <div id="scrollContainer">
+    <ul class="sidenav-menu">
+      <li class="sidenav-item">
+        <a class="sidenav-link" href="/">
+          <i class="fas fa-envelope pe-3"></i>Inbox</a>
+      </li>
+      <li class="sidenav-item">
+        <a class="sidenav-link">
+          <i class="fas fa-paper-plane pe-3"></i>Outbox</a>
+      </li>
+      <li class="sidenav-item">
+        <a class="sidenav-link">
+          <i class="fas fa-address-book pe-3"></i>Contacts</a>
+        <ul class="sidenav-collapse">
+          <li class="sidenav-item">
+            <a class="sidenav-link">Family</a>
+          </li>
+          <li class="sidenav-item">
+            <a class="sidenav-link" href="/pro/navigation/preview/2.html">Friends</a>
+          </li>
+          <li class="sidenav-item">
+            <a class="sidenav-link">Work</a>
+          </li>
+        </ul>
+      </li>
+      <li class="sidenav-item">
+        <a class="sidenav-link">
+          <i class="fas fa-file pe-3"></i>Drafts</a>
+      </li>
+      <li class="sidenav-item">
+        <a class="sidenav-link">
+          <i class="fas fa-heart pe-3"></i>Favourites</a>
+      </li>
+      <li class="sidenav-item">
+        <a class="sidenav-link">
+          <i class="fas fa-star pe-3"></i>Starred</a>
+      </li>
+      <li class="sidenav-item">
+        <a class="sidenav-link">
+          <i class="fas fa-trash pe-3"></i>Trash</a>
+      </li>
+      <li class="sidenav-item">
+        <a class="sidenav-link">
+          <i class="fas fa-ban pe-3"></i>Spam</a>
+      </li>
+      <li class="sidenav-item">
+        <a class="sidenav-link"><i class="fas fa-tag pe-3"></i>Categories</a>
+        <ul class="sidenav-collapse">
+          <li class="sidenav-item">
+            <a class="sidenav-link">Social</a>
+          </li>
+          <li class="sidenav-item">
+            <a class="sidenav-link">Notifications</a>
+          </li>
+          <li class="sidenav-item">
+            <a class="sidenav-link">Recent</a>
+          </li>
+          <li class="sidenav-item">
+            <a class="sidenav-link">Uploads</a>
+          </li>
+          <li class="sidenav-item">
+            <a class="sidenav-link">Backups</a>
+          </li>
+          <li class="sidenav-item">
+            <a class="sidenav-link">Offers</a>
+          </li>
+        </ul>
+      </li>
+      <li class="sidenav-item">
+        <a class="sidenav-link">
+          <i class="fas fa-sticky-note pe-3"></i>Notes</a>
+      </li>
+      <li class="sidenav-item">
+        <a class="sidenav-link">
+          <i class="fas fa-user-circle pe-3"></i>Personal</a>
+      </li>
+      <li class="sidenav-item">
+        <a class="sidenav-link">
+          <i class="fas fa-ellipsis-h pe-3"></i>More</a>
+      </li>
+    </ul>
+    <hr class="m-0">
+    <ul class="sidenav-menu">
+      <li class="sidenav-item">
+        <a class="sidenav-link">
+          <i class="fas fa-cogs pe-3"></i>Settings</a>
+      </li>
+      <li class="sidenav-item">
+        <a class="sidenav-link">
+          <i class="fas fa-user pe-3"></i>Profile</a>
+      </li>
+      <li class="sidenav-item">
+        <a class="sidenav-link">
+          <i class="fas fa-shield-alt pe-3"></i>Privacy</a>
+      </li>
+      <li class="sidenav-item">
+        <a class="sidenav-link">
+          <i class="fas fa-user-astronaut pe-3"></i>Log out</a>
+      </li>
+    </ul>
+  </div>
+  <div class="text-center" style="height: 100px;">
+    <hr class="mb-4 mt-0">
+    <p>MDBootstrap.com</p>
+  </div>
+</div>
+
+
+
+<div class="mdb-page-content text-center page-intro bg-light">
+  <div class="text-center py-5">
+    <h3 class="my-5">Resize to change the mode</h3>
+    <div>
+      <img class="rounded" src="https://mdbootstrap.com/img/Photos/Others/img%20(53).jpg">
+    </div>
+    <button id="toggler" class="btn btn-dark mt-5" data-mdb-toggle="sidenav" data-mdb-target="#full-screen-example">
+      <i class="fas fa-bars"></i>
+    </button>
+  </div>
+</div>
+ -->

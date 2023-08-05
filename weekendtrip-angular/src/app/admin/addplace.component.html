@@ -1,0 +1,118 @@
+
+<form [formGroup]="PlaceForm" novalidate (ngSubmit)="onSubmit() ">
+
+<mat-form-field appearance="fill" >
+  <mat-label>Select an option</mat-label>
+  <mat-select [(value)]="selectedCity"  >
+    <mat-option>None</mat-option>
+    <mat-option  value="{{city.cityName}}" *ngFor="let city of cityarr">{{city.cityName}}</mat-option>
+  </mat-select>
+</mat-form-field>
+
+<p>You selected: {{selectedCity}} city</p>
+
+
+
+<mat-form-field appearance="fill" >
+  <mat-label>Select an option</mat-label>
+  <mat-select [(value)]="selectedPack"    >
+    <mat-option>None</mat-option>
+    <mat-option  value="{{pack.packageName}}" *ngFor="let pack of getcities(selectedCity ) ">{{pack.packageName}}</mat-option>
+  </mat-select>
+</mat-form-field>
+
+<p>You selected: {{selectedPack}} package</p>
+
+
+  <mat-card class="shipping-card">
+  <mat-card-header>
+    <mat-card-title>Add place for weekend package</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+
+    <div class="row">
+      <div class="col">
+        <mat-form-field class="full-width">
+            <input matInput placeholder="placeName" formControlName="placeName">
+        </mat-form-field>
+      </div>
+      <div class="col">
+        <mat-form-field class="full-width">
+            <input matInput placeholder="placeImgUrl" formControlName="placeImgUrl">
+        </mat-form-field>
+      </div>
+    </div>
+  </mat-card-content>
+  <mat-card-actions>
+    <button mat-raised-button color="primary" type="submit"  [disabled]="!PlaceForm.valid" mat-dialog-close >Submit</button>
+    <button mat-raised-button mat-dialog-close color="warn" >Close</button>
+  </mat-card-actions>
+</mat-card>
+</form>
+
+
+
+
+
+
+
+
+
+
+
+<!--
+<button mat-raised-button (click)="isEditable = !isEditable">
+  {{!isEditable ? 'Enable edit mode' : 'Disable edit mode'}}
+</button>
+
+<mat-stepper linear #stepper>
+  <mat-step [stepControl]="firstFormGroup" [editable]="isEditable">
+    <form [formGroup]="firstFormGroup">
+      <ng-template matStepLabel>Fill out your name</ng-template>
+      <mat-form-field appearance="fill">
+        <mat-label>Name</mat-label>
+        <input matInput formControlName="firstCtrl" placeholder="Last name, First name" required>
+      </mat-form-field>
+      <div>
+        <button mat-button matStepperNext>Next</button>
+      </div>
+    </form>
+  </mat-step>
+  <mat-step [stepControl]="secondFormGroup" [editable]="isEditable">
+    <form [formGroup]="secondFormGroup">
+      <ng-template matStepLabel>Fill out your address</ng-template>
+      <mat-form-field appearance="fill">
+        <mat-label>Address</mat-label>
+        <input matInput formControlName="secondCtrl" placeholder="Ex. 1 Main St, New York, NY"
+               required>
+      </mat-form-field>
+      <div>
+        <button mat-button matStepperPrevious>Back</button>
+        <button mat-button matStepperNext>Next</button>
+      </div>
+    </form>
+  </mat-step>
+  <mat-step>
+    <ng-template matStepLabel>Done</ng-template>
+    <p>You are now done.</p>
+    <div>
+      <button mat-button matStepperPrevious>Back</button>
+      <button mat-button (click)="stepper.reset()">Reset</button>
+    </div>
+  </mat-step>
+</mat-stepper> -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

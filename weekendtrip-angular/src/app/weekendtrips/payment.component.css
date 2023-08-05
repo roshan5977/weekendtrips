@@ -1,0 +1,48 @@
+.container{
+  /* border: 2px solid black; */
+  width: 1000px;
+  height: 500px;
+}
+/* https://uiverse.io/david-mohseni/black-bobcat-14 */
+
+.main-payment{
+  display: flex;
+  flex-direction: column;
+  align-items:flex-start;
+  
+}
+.sub-payment{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  justify-content: space-around;
+}
+.maic-c{
+  background: var(--aysh);
+  padding: 100px;
+  
+}
+.img-s{
+  border-radius: 50%;
+  width: 70px;
+}
+input{
+  accent-color:red;
+}
+.custuomupi{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  top:300px;
+}
+.cname{
+  border: 1px solid black;
+  background-color:rgb(178, 178, 217);
+  width: 115px;
+  padding: 6px;
+  text-align: center;
+  color: black;
+}
+#apply{
+  margin-left: 300px;
+}

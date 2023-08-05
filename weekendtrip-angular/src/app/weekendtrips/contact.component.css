@@ -1,0 +1,27 @@
+*{
+    box-sizing: border-box;
+}
+.sendigpage{
+    /* border: 2px solid orange; */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 30px;
+    height: 30%;
+    
+}
+.sendigpage>.address{
+    border: 2px solid rgb(0, 0, 0);
+    border-radius: 5%;
+}
+.main-c{
+    background: var(--aysh);
+    
+}
+.list-group-item{
+    width: 400px;
+    background: transparent;
+    /* color: #000000; */
+    color: #fff;
+    padding: 8%;
+}

@@ -1,0 +1,199 @@
+<!-- <div>
+  Big line chart
+  <city-graph></city-graph>
+</div> -->
+
+<div style="width: 100%; background-color: rgb(232, 237, 240);">
+<h1 style=" margin:10px; font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;">DashBoard</h1>
+
+<mat-divider></mat-divider>
+<br>
+<div style="margin-left: 50px; margin-right: 50px; ">
+  <div fxLayout="row" fxFlexAlign="space-between center" fxLayoutGap="20px" class="stats-cards" >
+
+    <mat-card fxFlex="33" style="height: 100px; display: flex;">
+
+
+
+    <div style="width:40%;height:90%;background-color: #92dbff; border-radius: 20%;" >
+      <i class="fa-solid fa-calendar-check fa-2xl" style="color: #5189ec;margin-top: 40%;margin-left: 35%;width: 70%; "></i>
+    </div>
+     <div style="margin-left: 5px;">
+        <h2> <b>{{orders}}</b> <br> Total Order </h2>
+
+    </div>
+
+  </mat-card>
+  <mat-card fxFlex="33" style="height: 100px; display: flex;">
+
+    
+    <div style="width:40%;height:90%;background-color: #a2eb7a; border-radius: 20%;" >
+    <i class="fa-sharp fa-solid fa-users fa-2xl" style="color: #32e60a;margin-top: 40%; margin-left: 35%;width: 70%; align-items: center;"></i>
+    </div>
+     <div style="margin-left: 5px;">
+        <h2> <b>{{users }}</b> <br> Total Users </h2>
+
+    </div>
+
+
+  </mat-card>
+
+  <mat-card fxFlex="33" style="height: 100px; display: flex;">
+
+
+
+    <div style="width:40%;height:90%;background-color: #eba77a; border-radius: 20%;" >
+      <i class="fa-solid fa-circle-dollar-to-slot fa-2xl"  style="color: #e64c0a;margin-top: 40%; margin-left: 35%;width: 70%;"></i>
+    </div>
+     <div style="margin-left: 5px;">
+        <h2> <b>{{totalsale | currency:'INR'}}</b> <br> Total Sales </h2>
+
+    </div>
+
+  </mat-card>
+  <!-- <mat-card fxFlex="25">stats</mat-card> -->
+  </div>
+
+
+<mat-divider></mat-divider>
+<br>
+<div>
+  <div fxLayout="row" fxFlexAlign="space-between center" fxLayoutGap="25px" class="stats-cards">
+  <mat-card fxFlex="100">
+<h2>Recent Orders</h2>
+
+
+<table class="table align-middle mb-0 bg-white">
+  <thead class="bg-light">
+    <tr>
+      <th>Email</th>
+      <th>Date Order</th>
+      <th>Payment Status</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let traveller of travellers">
+      <td>
+        <div class="d-flex align-items-center">
+          <div class="ms-3">
+            <!-- <p class="fw-bold mb-1">John Doe</p> -->
+            <p class="text-muted mb-0">{{traveller.travellerEmail}}</p>
+          </div>
+        </div>
+      </td>
+      <td>
+        <!-- <p class="fw-normal mb-1">Software engineer</p> -->
+        <p class="text-muted mb-0">{{traveller.purchaseDate | date}}</p>
+      </td>
+      <td>
+        <span class="badge badge-success rounded-pill d-inline">Done</span>
+      </td>
+      <td>
+        <button type="button" class="btn btn-link btn-sm btn-rounded">
+          Edit
+        </button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+  </mat-card>
+  <!-- <mat-card fxFlex="30" >stats</mat-card> -->
+  </div>
+
+
+
+
+
+
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- <div style="display:flex; margin: 20px;">
+  <mat-card style="margin:5px">
+
+    <mat-card-header >
+      <mat-card-title>Shiba Inu</mat-card-title>
+      <mat-card-subtitle>Dog Breed</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+      <p>This card indeterminates progress bar.</p>
+      <p>nothing</p>
+    </mat-card-content>
+
+  </mat-card>
+  <mat-card style="margin:5px" >
+
+    <mat-card-header >
+      <mat-card-title>Shiba Inu</mat-card-title>
+      <mat-card-subtitle>Dog Breed</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+      <p>This card indeterminates progress bar.</p>
+      <p>nothing</p>
+    </mat-card-content>
+
+  </mat-card>
+  <mat-card style="margin:5px" >
+
+    <mat-card-header>
+      <mat-card-title>Shiba Inu</mat-card-title>
+      <mat-card-subtitle>Dog Breed</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+      <p>This card indeterminates progress bar.</p>
+      <p>nothing</p>
+    </mat-card-content>
+
+  </mat-card>
+
+</div>
+
+<div style="display: flex;">
+  <mat-card style="margin:5px" >
+
+    <mat-card-header>
+      <mat-card-title>Shiba Inu</mat-card-title>
+      <mat-card-subtitle>Dog Breed</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+      <p>This card indeterminates progress bar.</p>
+      <p>nothing</p>
+    </mat-card-content>
+
+  </mat-card>
+  <mat-card style="margin:5px" >
+
+    <mat-card-header>
+      <mat-card-title>Shiba Inu</mat-card-title>
+      <mat-card-subtitle>Dog Breed</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+      <p>This card indeterminates progress bar.</p>
+      <p>nothing</p>
+    </mat-card-content>
+
+  </mat-card>
+</div> -->
